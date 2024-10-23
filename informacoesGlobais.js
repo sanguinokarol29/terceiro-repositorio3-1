@@ -3,10 +3,10 @@ const url = 'https://raw.githubusercontent.com/guilhermeonrails/api/main/dados-g
 async function visualizarInformacoesGlobais() {
 
     const res = await fetch(url);
-    const dados = res.json();
+    const dados = await res.json();
     const paragrafo = document.createElement('p');
     paragrafo.classList.add('graficos-container_texto');
-    paragrafo.innerHTML = 'Você sabia que o mundo tem ${dados.total_pessoas_mundo} e que aproximadamente ${dados.total_pessoas_mundo} estão conectadas em alguma rede social e passam em média ${dados.tempo_medio} horas conectados.';
+    paragrafo.innerHTML = `Você sabia que o mundo tem <span>${dados.total_pessoas_mundo}</span> e que aproximadamente <span>${dados.total_pessoas_mundo}</span> destas estão conectadas em alguma rede social e passam em média <span>${dados.tempo_medio} horas conectados.`;
 
     const container = document.getElementById('graficos-container');
     container.appendChild(paragrafo);
